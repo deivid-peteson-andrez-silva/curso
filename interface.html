@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topo">
+        <a href="#" class="logo" onclick="mostrarLogin()">Python Academy</a>
+        <span id="usuario-logado"></span>
+    </header>
+
+    <main>
+        <!-- LOGIN -->
+        <section id="tela-login" class="tela">
+            <div class="apresentacao">
+                <span class="etiqueta">APRENDA PROGRAMANDO</span>
+                <h1>Domine Python<br><span>passo a passo.</span></h1>
+                <p>Aprenda programação com apostilas, desafios e testes de conhecimento.</p>
+            </div>
+
+            <div class="cartao">
+                <h2>Bem-vindo!</h2>
+                <p class="subtitulo">Entre na sua conta para continuar.</p>
+
+                <form id="form-login">
+                    <label for="login-email">E-mail</label>
+                    <input id="login-email" type="email" placeholder="voce@exemplo.com" required>
+
+                    <label for="login-senha">Senha</label>
+                    <input id="login-senha" type="password" placeholder="Digite sua senha" required>
+
+                    <button type="submit" class="botao">Entrar</button>
+                </form>
+
+                <p class="rodape-cartao">
+                    Ainda não tem conta?
+                    <button class="link" onclick="mostrarCadastro()">Criar uma conta</button>
+                </p>
+            </div>
+        </section>
+
+        <!-- CADASTRO -->
+        <section id="tela-cadastro" class="tela escondida">
+            <div class="cartao cartao-largo">
+                <span class="etiqueta">COMECE AGORA</span>
+                <h2>Criar sua conta</h2>
+                <p class="subtitulo">Preencha seus dados para começar a estudar.</p>
+
+                <form id="form-cadastro">
+                    <label for="cadastro-nome">Nome completo</label>
+                    <input id="cadastro-nome" type="text" placeholder="Seu nome" required>
+
+                    <label for="cadastro-idade">Idade</label>
+                    <input id="cadastro-idade" type="number" min="1" placeholder="Sua idade" required>
+
+                    <label for="cadastro-email">E-mail</label>
+                    <input id="cadastro-email" type="email" placeholder="voce@exemplo.com" required>
+
+                    <label for="cadastro-senha">Senha</label>
+                    <input id="cadastro-senha" type="password" minlength="6" placeholder="Crie uma senha" required>
+
+                    <button type="submit" class="botao">Criar conta</button>
+                </form>
+
+                <p class="rodape-cartao">
+                    Já tem uma conta?
+                    <button class="link" onclick="mostrarLogin()">Voltar ao login</button>
+                </p>
+            </div>
+        </section>
+
+        <!-- MENU PRINCIPAL -->
+        <section id="tela-menu" class="tela escondida">
+            <div class="cabecalho-pagina">
+                <span class="etiqueta">SUA ÁREA DE ESTUDOS</span>
+                <h1>Olá, <span id="nome-aluno">estudante</span>!</h1>
+                <p>O que vamos aprender hoje?</p>
+            </div>
+
+            <div class="resumo">
+                <div class="resumo-item">
+                    <span class="resumo-icone">📚</span>
+                    <div><strong>5</strong><small>Apostilas</small></div>
+                </div>
+                <div class="resumo-item">
+                    <span class="resumo-icone">📝</span>
+                    <div><strong id="total-provas">0</strong><small>Provas concluídas</small></div>
+                </div>
+                <div class="resumo-item">
+                    <span class="resumo-icone">⭐</span>
+                    <div><strong id="melhor-nota">--</strong><small>Melhor nota</small></div>
+                </div>
+            </div>
+
+            <div class="grade-cursos">
+                <button class="curso-card" onclick="mostrarApostilas()">
+                    <span class="curso-icone azul">📖</span>
+                    <h3>Apostilas</h3>
+                    <p>Estude String, Input, If/Else, For e Funções.</p>
+                    <span class="curso-link">Ver conteúdos →</span>
+                </button>
+
+                <button class="curso-card" onclick="iniciarProva()">
+                    <span class="curso-icone roxo">📝</span>
+                    <h3>Prova de Python</h3>
+                    <p>Teste seus conhecimentos com perguntas de múltipla escolha.</p>
+                    <span class="curso-link">Começar prova →</span>
+                </button>
+
+                <button class="curso-card" onclick="mostrarAtividade()">
+                    <span class="curso-icone verde">💻</span>
+                    <h3>Atividade prática</h3>
+                    <p>Resolva desafios e pratique a programação.</p>
+                    <span class="curso-link">Ver desafio →</span>
+                </button>
+
+                <button class="curso-card" onclick="mostrarConta()">
+                    <span class="curso-icone laranja">👤</span>
+                    <h3>Minha conta</h3>
+                    <p>Consulte seus dados e seu progresso.</p>
+                    <span class="curso-link">Ver perfil →</span>
+                </button>
+            </div>
+
+            <button class="botao-secundario" onclick="sair()">Sair da conta</button>
+        </section>
+
+        <!-- APOSTILAS -->
+        <section id="tela-apostilas" class="tela escondida">
+            <button class="voltar" onclick="mostrarMenu()">← Voltar ao menu</button>
+            <div class="cabecalho-pagina">
+                <span class="etiqueta">MATERIAL DE ESTUDO</span>
+                <h1>Apostilas de Python</h1>
+                <p>Escolha um conteúdo para começar.</p>
+            </div>
+
+            <div class="layout-apostilas">
+                <nav id="lista-apostilas" class="lista-apostilas">
+                    <button onclick="abrirApostila(1)">01. Strings</button>
+                    <button onclick="abrirApostila(2)">02. Input</button>
+                    <button onclick="abrirApostila(3)">03. If / Else</button>
+                    <button onclick="abrirApostila(4)">04. For</button>
+                    <button onclick="abrirApostila(5)">05. Funções</button>
+                </nav>
+
+                <article id="conteudo-apostila" class="conteudo-apostila">
+                    <span class="etiqueta">COMECE POR AQUI</span>
+                    <h2>Aprenda Python</h2>
+                    <p>Selecione um tópico ao lado para visualizar a apostila.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- PROVA -->
+        <section id="tela-prova" class="tela escondida">
+            <button class="voltar" onclick="mostrarMenu()">← Voltar ao menu</button>
+            <div class="prova-cartao">
+                <div class="prova-topo">
+                    <span class="etiqueta">TESTE SEUS CONHECIMENTOS</span>
+                    <span id="progresso-prova">Pergunta 1</span>
+                </div>
+                <div class="barra-progresso"><div id="progresso-preenchido"></div></div>
+                <h2 id="pergunta-texto">Pergunta</h2>
+                <div id="alternativas" class="alternativas"></div>
+                <button id="botao-responder" class="botao" onclick="responder()">Confirmar resposta</button>
+                <p id="mensagem-prova" class="mensagem"></p>
+            </div>
+        </section>
+
+        <!-- RESULTADO -->
+        <section id="tela-resultado" class="tela escondida">
+            <div class="cartao resultado-cartao">
+                <span class="resultado-icone">🏆</span>
+                <h1>Prova concluída!</h1>
+                <p class="subtitulo">Confira seu resultado.</p>
+                <div class="nota-final" id="nota-final">0,0</div>
+                <p id="detalhe-resultado"></p>
+                <button class="botao" onclick="mostrarMenu()">Voltar ao menu</button>
+                <button class="botao-secundario" onclick="iniciarProva()">Tentar novamente</button>
+            </div>
+        </section>
+
+        <!-- ATIVIDADE -->
+        <section id="tela-atividade" class="tela escondida">
+            <button class="voltar" onclick="mostrarMenu()">← Voltar ao menu</button>
+            <div class="cartao cartao-largo">
+                <span class="etiqueta">DESAFIO PRÁTICO</span>
+                <h1>Hora de programar!</h1>
+                <p>Crie um programa Python que solicite o nome do usuário e mostre uma mensagem de boas-vindas.</p>
+                <h3>Exemplo de solução</h3>
+                <pre><code>nome = input("Digite seu nome: ")
+print("Bem-vindo,", nome)</code></pre>
+                <label for="resposta-atividade">Escreva sua solução</label>
+                <textarea id="resposta-atividade" rows="7" placeholder="Digite seu código aqui..."></textarea>
+                <button class="botao" onclick="verificarAtividade()">Verificar resposta</button>
+                <p id="resultado-atividade" class="mensagem"></p>
+            </div>
+        </section>
+
+        <!-- CONTA -->
+        <section id="tela-conta" class="tela escondida">
+            <button class="voltar" onclick="mostrarMenu()">← Voltar ao menu</button>
+            <div class="cartao cartao-largo">
+                <span class="etiqueta">SEU PERFIL</span>
+                <h1>Minha conta</h1>
+                <div class="perfil-avatar">👤</div>
+                <p><strong>Nome:</strong> <span id="perfil-nome"></span></p>
+                <p><strong>Idade:</strong> <span id="perfil-idade"></span></p>
+                <p><strong>E-mail:</strong> <span id="perfil-email"></span></p>
+                <p><strong>Provas concluídas:</strong> <span id="perfil-provas">0</span></p>
+                <p><strong>Melhor nota:</strong> <span id="perfil-nota">--</span></p>
+                <button class="botao-secundario" onclick="sair()">Sair da conta</button>
+            </div>
+        </section>
+
+        <div id="aviso" class="aviso escondido"></div>
+    </main>
+
+    <footer>
+        <p>Python Academy · Plataforma de estudos de programação</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
